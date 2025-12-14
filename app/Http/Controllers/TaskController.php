@@ -31,4 +31,13 @@ class TaskController extends Controller
 
         return redirect()->route('tasks.index');
     }
+
+    public function toggle(Task $task)
+    {
+        $task->update([
+            'completed' => !$task->completed
+        ]);
+        
+        return redirect()->route('tasks.index');
+    }
 }

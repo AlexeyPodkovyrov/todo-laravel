@@ -21,9 +21,13 @@
                     <span class="{{ $task->completed ? 'line-through text-gray-500' : '' }}">
                         {{ $task->title }}
                     </span>
-                    <span class="text-xl">
-                        {{ $task->completed ? '✔' : '❌' }}
-                    </span>
+            <form action="{{ route('tasks.toggle', $task) }}" method="POST">
+                @csrf
+                @method('PATCH')
+                <button type="submit" class="text-2xl focus:outline-none">
+                    {{ $task->completed ? '✔' : '❌' }}
+                </button>
+            </form>
                 </li>
             @endforeach
         </ul>
